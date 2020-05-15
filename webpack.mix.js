@@ -20,3 +20,7 @@ mix.js("resources/assets/js/sample.js", "public/js");
 if (!mix.inProduction()) {
     mix.webpackConfig({devtool: 'source-map'}).sourceMaps()
 }
+
+// キャッシュを更新
+mix.version();
+
