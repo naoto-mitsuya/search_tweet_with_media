@@ -21021,7 +21021,7 @@ $("#search_form").submit(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/saidanaoto/app/search_tweet_with_time/resources/assets/js/sample.js */"./resources/assets/js/sample.js");
+module.exports = __webpack_require__(/*! /Users/saidanaoto/app/search_tweet_with_media/resources/assets/js/sample.js */"./resources/assets/js/sample.js");
 
 
 /***/ })

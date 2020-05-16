@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         {!! Form::open(['action' => 'TwitterController@search', 'method' => 'get', 'id' => 'search_form']) !!}
-        {{-- <div class="d-block"> --}}
             <h5 class="d-block">
                 {!! Form::label('keyword_txt', 'キーワード', ['class' => 'control-label']) !!}
             </h5>
@@ -50,9 +49,22 @@
                         <img src="https://placehold.jp/70x70.png" class="rounded-circle mr-4">
                         <div class="media-body">
                             <h5 class="d-inline mr-3"><strong>{{ $tweet->user->name }}</strong></h5>
-                            {{-- 修正後 --}}
                             <h6 class="d-inline text-secondary">{{ $tweet->created_at }}</h6>
-                            <p class="mt-3 mb-0">{{ $tweet->text }}</p>
+                            <div class="row">
+                                <p class="mt-3 mb-0 col-8">{{ $tweet->text }}</p>
+                                @if (isset($tweet->extended_entities->media[0]))
+                                    <div class="col-4 tweet_media_div" style='background-color:#7fffff'>
+                                        @if ($tweet->extended_entities->media[0]->type == "photo")
+                                            <img src="{{ $tweet->extended_entities->media[0]->media_url_https }}" class="tweet_media" style="width:100px;" alt="">
+                                        @endif
+                                        @if ($tweet->extended_entities->media[0]->type == "video" || $tweet->extended_entities->media[0]->type == "animated_gif")
+                                            <video controls preload style="height:300px;">
+                                                <source src="{{ $tweet->extended_entities->media[0]->video_info->variants[0]->url }}" type="video/mp4">
+                                            </video>
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
